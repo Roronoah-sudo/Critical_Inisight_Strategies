@@ -1,1307 +1,564 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Critical Insight Strategies | Clinician-Led Critical Care Staffing</title>
-  <meta name="description" content="Clinician-led travel PA staffing for high-acuity, trauma, ICU, and critical care environments. Founded and led by Dr. Mary Herc, DMSc, PA-C, CAQ-EM, CAQ-HM." />
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Critical Insight Strategies | Clinician-Led Critical Care Deployment</title>
+  <meta name="description" content="Clinician-led travel PA staffing for high-acuity trauma, ICU, emergency, and hospital medicine environments." />
   <style>
     :root{
-      --navy:#3B4A68;      /* Primary Brand Blue */
-      --slate:#828D9F;     /* Secondary Blue-Gray */
-      --ink:#0f172a;
-      --paper:#ffffff;
-      --muted:#e8ecf3;
-      --glass: rgba(255,255,255,.08);
-      --glass2: rgba(255,255,255,.12);
-      --ring: rgba(130,141,159,.35);
-      --shadow: 0 18px 50px rgba(15, 23, 42, .18);
-      --shadow2: 0 10px 25px rgba(15, 23, 42, .16);
-      --radius: 18px;
-      --radius2: 24px;
-      --max: 1120px;
+      /* Critical Insight Strategies */
+      --cis-navy:#3B4A68;
+      --cis-steel:#828D9F;
+
+      /* Grand Line Analytics */
+      --gla-teal:#0F4C4F;
+      --gla-gold:#D6B25E;
+      --gla-silver:#C7CCD6;
+
+      /* UI */
+      --ink:#0b1220;
+      --bg0:#070A12;
+      --bg1:#0B1326;
+      --bg2:#0F1C38;
+      --card:rgba(255,255,255,0.06);
+      --card2:rgba(255,255,255,0.09);
+      --border:rgba(255,255,255,0.10);
+      --text:#EAF0FF;
+      --muted:rgba(234,240,255,0.70);
+      --muted2:rgba(234,240,255,0.55);
+      --shadow:0 28px 70px rgba(0,0,0,0.55);
+      --shadow2:0 22px 55px rgba(0,0,0,0.45);
+      --radius:18px;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{box-sizing:border-box;}
+    html,body{height:100%;}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color: #0b1220;
+      color:var(--text);
       background:
-        radial-gradient(1200px 700px at 20% 10%, rgba(59,74,104,.35), transparent 55%),
-        radial-gradient(900px 600px at 80% 15%, rgba(130,141,159,.28), transparent 55%),
-        radial-gradient(900px 700px at 50% 110%, rgba(59,74,104,.18), transparent 60%),
-        linear-gradient(180deg, #070b16 0%, #0b1220 55%, #070b16 100%);
+        radial-gradient(900px 520px at 14% 14%, rgba(59,74,104,0.55), transparent 55%),
+        radial-gradient(900px 520px at 86% 18%, rgba(130,141,159,0.30), transparent 58%),
+        radial-gradient(900px 520px at 72% 92%, rgba(59,74,104,0.35), transparent 60%),
+        linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 40%, var(--bg2) 100%);
       overflow-x:hidden;
     }
 
-    a{color:inherit; text-decoration:none}
-    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 12px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.06);
-      color: rgba(255,255,255,.86);
-      backdrop-filter: blur(10px);
-      font-size: 13px;
-      line-height: 1;
-    }
-    .dot{width:8px;height:8px;border-radius:50%;background: var(--slate); box-shadow:0 0 0 4px rgba(130,141,159,.15)}
-    .section{padding:84px 0}
-    .section.tight{padding:56px 0}
-    .h1{
-      font-size: clamp(34px, 4vw, 54px);
-      letter-spacing:-.02em;
-      line-height:1.05;
-      margin:14px 0 12px;
-      color: #f7f8fb;
-    }
-    .h2{
-      font-size: clamp(24px, 3vw, 34px);
-      letter-spacing:-.02em;
-      line-height:1.12;
-      margin:0 0 12px;
-      color:#f7f8fb;
-    }
-    .lead{
-      color: rgba(255,255,255,.78);
-      font-size: 16px;
-      line-height: 1.65;
-      margin:0 0 24px;
-      max-width: 68ch;
-    }
-    .muted{color: rgba(255,255,255,.72)}
-    .small{font-size:13px; line-height:1.55; color: rgba(255,255,255,.7)}
+    a{color:inherit;}
 
-    /* Header */
-    .header{
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      background: rgba(7,11,22,.55);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-    .header-row{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 14px 0;
-      gap:16px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px; min-width: 240px;
-    }
-    .logo{
-      width:38px; height:38px; border-radius:12px;
-      display:grid; place-items:center;
-      background: linear-gradient(135deg, rgba(59,74,104,.9), rgba(130,141,159,.55));
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow: 0 12px 30px rgba(0,0,0,.25);
-      overflow:hidden;
-    }
-    .logo svg{width:22px; height:22px}
-    .brand strong{
-      display:block;
-      font-size: 14px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.92);
-    }
-    .brand span{
-      display:block;
-      font-size: 12px;
-      color: rgba(255,255,255,.62);
-      margin-top: 2px;
-    }
+    .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
 
+    /* Top nav */
     .nav{
-      display:none;
-      align-items:center;
-      gap: 14px;
-      flex:1;
-      justify-content:center;
+      position:sticky; top:0; z-index:50;
+      background: linear-gradient(135deg, rgba(7,10,18,0.78), rgba(11,19,38,0.62));
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
     }
-    .nav a{
-      font-size: 13px;
-      color: rgba(255,255,255,.72);
-      padding: 8px 10px;
-      border-radius: 10px;
-      transition: .2s ease;
-      border: 1px solid transparent;
-    }
-    .nav a:hover{
-      color:#fff;
-      background: rgba(255,255,255,.06);
-      border-color: rgba(255,255,255,.10);
-    }
+    .nav .inner{display:flex; align-items:center; justify-content:space-between; gap:18px; padding:18px 0;}
+    .brand{display:flex; align-items:center; gap:14px; min-width:260px;}
+    .brand img{height:40px; width:auto; display:block; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.35));}
+    .brand .name{line-height:1.1;}
+    .brand .name strong{display:block; font-size:13px; letter-spacing:0.18em; text-transform:uppercase; opacity:0.92;}
+    .brand .name span{display:block; font-size:12px; color:var(--muted2); margin-top:4px;}
 
-    .header-actions{display:flex; align-items:center; gap:10px}
+    .navlinks{display:flex; align-items:center; gap:18px; flex-wrap:wrap; justify-content:flex-end;}
+    .navlinks a{
+      text-decoration:none;
+      font-size:13px;
+      color:var(--muted);
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid transparent;
+      transition: all .18s ease;
+      white-space:nowrap;
+    }
+    .navlinks a:hover{color:var(--text); border-color:rgba(255,255,255,0.14); background:rgba(255,255,255,0.05);}
+
+    .nav-cta{display:flex; align-items:center; gap:10px;}
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding: 10px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      color: rgba(255,255,255,.9);
-      font-size: 13px;
-      cursor:pointer;
-      transition: .2s ease;
-      white-space: nowrap;
+      text-decoration:none;
+      font-weight:650;
+      font-size:13px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color:var(--text);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
     }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.22);}
+
     .btn.primary{
-      border-color: rgba(130,141,159,.55);
-      background: linear-gradient(135deg, rgba(59,74,104,.95), rgba(130,141,159,.55));
-      box-shadow: 0 18px 40px rgba(59,74,104,.28);
-    }
-    .btn.primary:hover{background: linear-gradient(135deg, rgba(59,74,104,1), rgba(130,141,159,.62))}
-    .icon{
-      width:16px;height:16px; display:inline-block;
-      opacity:.95;
-    }
-    .menu-btn{display:inline-flex}
-    @media (min-width: 980px){
-      .nav{display:flex}
-      .menu-btn{display:none}
+      border: 1px solid rgba(130,141,159,0.35);
+      background: linear-gradient(135deg, rgba(59,74,104,0.92), rgba(59,74,104,0.62));
+      box-shadow: 0 18px 48px rgba(59,74,104,0.35);
     }
 
     /* Hero */
-    .hero{
-      position: relative;
-      padding: 82px 0 34px;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 26px;
-      align-items: start;
-    }
-    @media (min-width: 980px){
-      .hero-grid{grid-template-columns: 1.05fr .95fr; gap: 34px; align-items: center}
-    }
+    .hero{padding:78px 0 34px;}
+    .hero-grid{display:grid; grid-template-columns: 1.2fr 0.8fr; gap:28px; align-items:stretch;}
 
     .hero-card{
-      border-radius: var(--radius2);
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      backdrop-filter: blur(14px);
+      border:1px solid rgba(255,255,255,0.12);
+      background:
+        radial-gradient(900px 520px at 18% 12%, rgba(130,141,159,0.22), transparent 58%),
+        radial-gradient(700px 520px at 78% 88%, rgba(59,74,104,0.28), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.04) 100%);
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
+      padding: 34px;
+      position:relative;
       overflow:hidden;
     }
-    .hero-card-inner{padding: 18px}
-    .hero-card-top{
-      display:flex; align-items:center; justify-content:space-between; gap: 14px;
-      padding: 14px 18px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-    }
-    .hero-card-top .title{
-      font-size: 13px;
-      color: rgba(255,255,255,.8);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-    .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-      color: rgba(255,255,255,.78);
-      font-size: 12px;
-      white-space: nowrap;
-    }
+    .kicker{display:inline-flex; gap:10px; align-items:center; padding:8px 12px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); color:var(--muted); font-size:12px;}
+    .dot{width:7px; height:7px; border-radius:999px; background: linear-gradient(135deg, var(--cis-steel), rgba(255,255,255,0.9)); box-shadow:0 0 0 4px rgba(130,141,159,0.12);}
 
-    .demo{
-      display:flex; flex-direction:column; gap:12px;
-      padding: 16px 18px 18px;
-    }
-    .demo-row{
-      display:flex; gap: 10px; align-items:flex-start;
-    }
-    .bubble{
-      max-width: 100%;
-      border-radius: 16px;
-      padding: 12px 12px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      color: rgba(255,255,255,.82);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-    .bubble.user{
-      margin-left:auto;
-      background: rgba(59,74,104,.35);
-      border-color: rgba(130,141,159,.25);
-    }
-    .bubble.system{
-      background: rgba(255,255,255,.04);
-    }
-    .chiprow{
-      display:flex; flex-wrap:wrap; gap:8px;
-      padding: 0 18px 18px;
-    }
-    .chip{
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.72);
-      font-size: 12px;
-    }
+    h1{margin:16px 0 10px; font-size:46px; line-height:1.06; letter-spacing:-0.02em;}
+    .sub{margin:0 0 18px; font-size:16px; color:var(--muted); max-width:58ch;}
 
-    .cta-row{
-      display:flex; flex-wrap:wrap; gap: 10px;
-      margin: 18px 0 10px;
-    }
-    .cta-sub{
-      display:flex; gap:16px; flex-wrap:wrap;
-      color: rgba(255,255,255,.62);
-      font-size: 13px;
-      margin-top: 10px;
-    }
-    .kpi-row{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 18px;
-    }
-    @media (min-width: 680px){
-      .kpi-row{grid-template-columns: repeat(3, 1fr)}
-    }
-    .kpi{
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      padding: 14px 14px;
-    }
-    .kpi strong{display:block; color:#fff; font-size: 14px; margin-bottom: 6px}
-    .kpi span{display:block; color: rgba(255,255,255,.7); font-size: 12px; line-height: 1.4}
+    .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px;}
 
-    /* Cards & grids */
-    .grid-3{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin-top: 18px;
-    }
-    @media (min-width: 860px){
-      .grid-3{grid-template-columns: repeat(3, 1fr)}
-    }
-    .grid-2{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin-top: 18px;
-    }
-    @media (min-width: 860px){
-      .grid-2{grid-template-columns: repeat(2, 1fr)}
-    }
-    .card{
+    .stat-panel{
+      border:1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
       border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      backdrop-filter: blur(10px);
       box-shadow: var(--shadow2);
+      padding: 26px;
+      overflow:hidden;
+      position:relative;
+    }
+    .stat-panel:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(420px 260px at 18% 18%, rgba(59,74,104,0.45), transparent 60%),
+        radial-gradient(420px 260px at 86% 70%, rgba(130,141,159,0.26), transparent 60%);
+      opacity:0.9;
+      pointer-events:none;
+    }
+    .stat-panel > *{position:relative;}
+    .stat-title{font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(234,240,255,0.72);}
+    .stat-list{margin:16px 0 0; padding:0; list-style:none; display:grid; gap:12px;}
+    .pill{
+      display:flex; align-items:flex-start; gap:10px;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.12);
+    }
+    .pill b{display:block; font-size:13px;}
+    .pill span{display:block; font-size:12px; color:var(--muted2); margin-top:2px;}
+    .pill .mark{width:10px; height:10px; border-radius:3px; background: linear-gradient(135deg, var(--cis-steel), rgba(255,255,255,0.85)); margin-top:3px;}
+
+    /* Sections */
+    .section{padding:54px 0;}
+    .section-head{display:flex; align-items:flex-end; justify-content:space-between; gap:18px; margin-bottom:18px;}
+    .section-head h2{margin:0; font-size:26px; letter-spacing:-0.01em;}
+    .section-head p{margin:0; color:var(--muted); max-width:68ch; font-size:14px;}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:16px;
+    }
+
+    .card{
+      border:1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.065), rgba(255,255,255,0.035));
+      border-radius: 18px;
       padding: 18px;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.35);
     }
-    .card h3{
-      margin: 0 0 8px;
-      font-size: 15px;
-      color: rgba(255,255,255,.92);
-      letter-spacing: -.01em;
+
+    .card h3{margin:2px 0 6px; font-size:14px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(234,240,255,0.82);}
+    .card p{margin:0; color:var(--muted); font-size:13px; line-height:1.55;}
+
+    .two-col{grid-column: span 6;}
+    .three-col{grid-column: span 4;}
+    .four-col{grid-column: span 3;}
+    .full{grid-column: 1 / -1;}
+
+    .spec{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:16px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.10);
     }
-    .card p{margin:0; color: rgba(255,255,255,.72); font-size: 13px; line-height: 1.55}
-    .card ul{margin: 10px 0 0; padding-left: 18px; color: rgba(255,255,255,.72); font-size: 13px; line-height: 1.6}
-    .card li{margin: 6px 0}
-    .card .meta{
-      display:flex; gap: 10px; flex-wrap:wrap;
-      margin-top: 12px;
-    }
+    .spec strong{font-size:14px;}
+    .spec em{font-style:normal; color:var(--muted2); font-size:12px;}
+
+    .tagrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
     .tag{
-      display:inline-flex; align-items:center; gap: 8px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      color: rgba(255,255,255,.7);
-      font-size: 12px;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: rgba(234,240,255,0.80);
+      font-size:12px;
     }
-
-    /* Timeline */
-    .timeline{
-      margin-top: 16px;
-      display:grid;
-      gap: 10px;
-    }
-    .titem{
-      display:grid;
-      grid-template-columns: 18px 1fr;
-      gap: 12px;
-      align-items:start;
-      padding: 12px 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.035);
-    }
-    .tline{
-      width: 10px;
-      height: 10px;
-      margin-top: 4px;
-      border-radius: 999px;
-      background: var(--slate);
-      box-shadow:0 0 0 4px rgba(130,141,159,.16);
-    }
-    .titem strong{color:#fff; font-size: 13px}
-    .titem span{display:block; color: rgba(255,255,255,.7); font-size: 12px; line-height: 1.55; margin-top: 4px}
-
-    /* Accordion */
-    .accordion{margin-top: 14px; display:grid; gap: 10px}
-    details{
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.035);
-      padding: 12px 14px;
-    }
-    summary{
-      cursor:pointer;
-      list-style:none;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      color: rgba(255,255,255,.9);
-      font-size: 13px;
-      user-select:none;
-    }
-    summary::-webkit-details-marker{display:none}
-    details p{margin:10px 0 0; color: rgba(255,255,255,.72); font-size: 13px; line-height: 1.6}
 
     /* Contact */
-    .contact-grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin-top: 18px;
+    .contact{
+      border:1px solid rgba(255,255,255,0.12);
+      background:
+        radial-gradient(900px 520px at 10% 20%, rgba(59,74,104,0.34), transparent 60%),
+        radial-gradient(700px 520px at 90% 70%, rgba(130,141,159,0.22), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,0.065), rgba(255,255,255,0.03));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
     }
-    @media (min-width: 980px){
-      .contact-grid{grid-template-columns: 1.05fr .95fr}
-    }
-    .form{
-      display:grid;
-      gap: 10px;
-    }
-    .row2{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-    @media (min-width: 680px){
-      .row2{grid-template-columns: 1fr 1fr}
-    }
-    label{display:grid; gap: 6px; font-size: 12px; color: rgba(255,255,255,.72)}
+    form{display:grid; grid-template-columns: repeat(12, 1fr); gap:12px; margin-top:14px;}
+    label{font-size:12px; color:rgba(234,240,255,0.70); display:block; margin-bottom:6px; letter-spacing:0.04em;}
     input, select, textarea{
-      width: 100%;
-      padding: 12px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
-      color: rgba(255,255,255,.9);
-      outline: none;
+      width:100%;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.18);
+      color: var(--text);
+      outline:none;
     }
-    textarea{min-height: 120px; resize: vertical}
-    input:focus, textarea:focus, select:focus{
-      border-color: rgba(130,141,159,.45);
-      box-shadow: 0 0 0 4px rgba(130,141,159,.18);
-    }
+    textarea{min-height:120px; resize:vertical;}
+    .field{grid-column: span 6;}
+    .field.full{grid-column: 1 / -1;}
+
+    .form-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:6px;}
 
     /* Footer */
     footer{
-      padding: 28px 0 36px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      background: rgba(0,0,0,.12);
+      margin-top:56px;
+      border-top:1px solid rgba(255,255,255,0.10);
+      background:
+        radial-gradient(520px 240px at 18% 0%, rgba(15,76,79,0.55), transparent 65%),
+        radial-gradient(520px 240px at 86% 20%, rgba(214,178,94,0.18), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.35));
+      padding: 34px 0;
     }
-    .foot-row{
-      display:flex; flex-wrap:wrap; gap: 12px;
-      align-items:center; justify-content:space-between;
-      color: rgba(255,255,255,.65);
-      font-size: 12px;
+    .foot{
+      display:flex; align-items:center; justify-content:space-between; gap:18px;
+      flex-wrap:wrap;
+      color: rgba(234,240,255,0.65);
+      font-size:12px;
     }
-    .foot-brand{
-      display:flex; align-items:center; gap: 10px;
+    .powered{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+    .powered .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(214,178,94,0.24);
+      background: rgba(15,76,79,0.18);
     }
-    .gla{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      color: rgba(255,255,255,.72);
-      white-space:nowrap;
-    }
-    .gla .spark{
-      width:10px;height:10px;border-radius:3px;
-      background: linear-gradient(135deg, #2dd4bf, #f59e0b); /* Grand Line-inspired teal->gold */
-      box-shadow: 0 0 0 4px rgba(45,212,191,.12);
+    .powered img{height:26px; width:auto; display:block; filter: drop-shadow(0 10px 18px rgba(0,0,0,0.45));}
+    .powered b{color: rgba(234,240,255,0.90); letter-spacing:0.14em; text-transform:uppercase; font-size:11px;}
+    .powered span{color: rgba(234,240,255,0.70);}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns: 1fr;}
+      h1{font-size:38px;}
+      .navlinks{display:none;}
+      .field{grid-column: span 12;}
+      .two-col{grid-column: span 12;}
+      .three-col{grid-column: span 6;}
+      .four-col{grid-column: span 6;}
     }
 
-    /* Mobile drawer */
-    .drawer{
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.5);
-      display:none;
-      z-index: 60;
-    }
-    .drawer.open{display:block}
-    .panel{
-      position:absolute;
-      right: 0;
-      top: 0;
-      height: 100%;
-      width: min(420px, 92vw);
-      background: rgba(7,11,22,.9);
-      backdrop-filter: blur(14px);
-      border-left: 1px solid rgba(255,255,255,.10);
-      padding: 16px;
-    }
-    .panel a{
-      display:block;
-      padding: 12px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.82);
-      margin-bottom: 10px;
-      font-size: 13px;
-    }
-    .panel a:hover{background: rgba(255,255,255,.07)}
-    .panel .top{
-      display:flex; align-items:center; justify-content:space-between;
-      margin-bottom: 12px;
-    }
-    .x{
-      width: 36px; height: 36px; border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.85);
-      cursor:pointer;
+    @media (max-width: 560px){
+      .wrap{padding:0 18px;}
+      header, .nav .inner{padding-left:0; padding-right:0;}
+      h1{font-size:32px;}
+      .brand .name strong{font-size:12px;}
     }
   </style>
 </head>
-
 <body>
-  <!-- Mobile Drawer -->
-  <div class="drawer" id="drawer" aria-hidden="true">
-    <div class="panel" role="dialog" aria-modal="true" aria-label="Navigation">
-      <div class="top">
-        <div class="pill"><span class="dot"></span> Navigation</div>
-        <button class="x" id="closeDrawer" aria-label="Close menu">✕</button>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="wrap inner">
+      <div class="brand">
+        <!-- Replace with your final CIS logo asset path -->
+        <img src="/assets/critical-insight-logo.png" alt="Critical Insight Strategies" />
+        <div class="name">
+          <strong>Critical Insight Strategies</strong>
+          <span>Clinician-led critical care deployment</span>
+        </div>
       </div>
-      <a href="#about" class="drawerLink">About</a>
-      <a href="#leadership" class="drawerLink">Clinical Leadership</a>
-      <a href="#specialties" class="drawerLink">Specialties</a>
-      <a href="#capabilities" class="drawerLink">Capabilities</a>
-      <a href="#compliance" class="drawerLink">Compliance</a>
-      <a href="#facilities" class="drawerLink">For Facilities</a>
-      <a href="#pas" class="drawerLink">For PAs</a>
-      <a href="#mission" class="drawerLink">Mission</a>
-      <a href="#contact" class="drawerLink">Contact</a>
-      <div style="height:10px"></div>
-      <a href="#contact" class="drawerLink" style="border-color: rgba(130,141,159,.45); background: linear-gradient(135deg, rgba(59,74,104,.95), rgba(130,141,159,.55));">Request Elite PA Coverage</a>
+
+      <div class="navlinks" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#leadership">Clinical Leadership</a>
+        <a href="#specialties">Specialties</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#facilities">Facilities</a>
+        <a href="#pas">For PAs</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="nav-cta">
+        <a class="btn" href="#pas">Join Team</a>
+        <a class="btn primary" href="#contact">Request Coverage</a>
+      </div>
     </div>
   </div>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <div class="header-row">
-        <a class="brand" href="#top" aria-label="Critical Insight Strategies">
-          <!-- Replace this shield with your actual logo image if available -->
-          <div class="logo" aria-hidden="true" title="Shield logo placeholder">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M12 2l8 4v7c0 5-3.4 8.7-8 9-4.6-.3-8-4-8-9V6l8-4z" stroke="rgba(255,255,255,.88)" stroke-width="1.6"/>
-              <path d="M8.3 11.8l2.2 2.2 5.4-5.4" stroke="rgba(255,255,255,.88)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div>
-            <strong>CRITICAL INSIGHT</strong>
-            <span>Clinician-led critical care deployment</span>
-          </div>
-        </a>
-
-        <nav class="nav" aria-label="Primary navigation">
-          <a href="#about">About</a>
-          <a href="#leadership">Clinical Leadership</a>
-          <a href="#specialties">Specialties</a>
-          <a href="#capabilities">Capabilities</a>
-          <a href="#compliance">Compliance</a>
-          <a href="#contact">Contact</a>
-        </nav>
-
-        <div class="header-actions">
-          <a class="btn" href="#pas" title="For Physician Assistants">
-            <span class="icon" aria-hidden="true">🩺</span>
-            For PAs
-          </a>
-          <a class="btn primary" href="#contact" title="Request elite PA coverage">
-            <span class="icon" aria-hidden="true">🛡️</span>
-            Request Coverage
-          </a>
-          <button class="btn menu-btn" id="openDrawer" aria-label="Open menu">
-            <span class="icon" aria-hidden="true">☰</span>
-            Menu
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <main id="top" class="hero">
-    <div class="container">
+  <!-- HERO -->
+  <main class="wrap">
+    <section class="hero" id="top">
       <div class="hero-grid">
-        <div>
-          <div class="pill"><span class="dot"></span> High-acuity staffing only • Trauma • ICU • EM • Hospital Medicine</div>
-          <h1 class="h1">Clinician-Led Travel PA Staffing for High-Acuity, Trauma, and Critical Care Environments</h1>
-          <p class="lead">
-            Critical Insight Strategies is founded and clinically directed by <strong style="color:#fff">Dr. Mary Herc, DMSc, PA-C, CAQ-EM, CAQ-HM</strong>.
-            This is not recruiter-driven staffing—it is clinician-designed deployment, optimized for patient safety, procedural competence, and rapid readiness.
-          </p>
-
+        <div class="hero-card">
+          <div class="kicker"><span class="dot"></span> High-acuity only • Clinician-designed deployment</div>
+          <h1>Elite Travel PA Staffing for Trauma, ICU, Emergency & Hospital Medicine</h1>
+          <p class="sub">Critical Insight Strategies delivers clinician-led coverage built for the sickest patients and the most demanding environments—designed and directed by a doctorate-trained, board-certified critical care PA.</p>
           <div class="cta-row">
-            <a class="btn primary" href="#contact">
-              <span class="icon" aria-hidden="true">🏥</span>
-              For Facilities: Request Elite PA Coverage
-            </a>
-            <a class="btn" href="#pas">
-              <span class="icon" aria-hidden="true">🧭</span>
-              For PAs: Join the High-Acuity Travel Team
-            </a>
+            <a class="btn primary" href="#contact">For Facilities: Request Elite PA Coverage</a>
+            <a class="btn" href="#pas">For PAs: Join the High-Acuity Team</a>
           </div>
-
-          <div class="cta-sub">
-            <span>Residency-trained critical care PA leadership</span>
-            <span>Trauma, ICU, Emergency & Hospital Medicine specialization</span>
-            <span>Tactical, wilderness, and disaster-ready capability</span>
-          </div>
-
-          <div class="kpi-row">
-            <div class="kpi">
-              <strong>High-acuity only</strong>
-              <span>ICU/Trauma/EM placements designed for procedural demands and supervision efficiency.</span>
-            </div>
-            <div class="kpi">
-              <strong>Clinician-led onboarding</strong>
-              <span>Readiness validation aligned to privileging expectations and unit workflows.</span>
-            </div>
-            <div class="kpi">
-              <strong>Risk-aware deployment</strong>
-              <span>Staff your sickest patients safely—capability, scope, and standards are explicit.</span>
-            </div>
+          <div class="tagrow" style="margin-top:18px;">
+            <div class="tag">Residency-trained leadership</div>
+            <div class="tag">Dual CAQs: EM + HM</div>
+            <div class="tag">Procedural excellence</div>
+            <div class="tag">Disaster / austere readiness</div>
           </div>
         </div>
 
-        <!-- Modeled "demo" module reminiscent of hints-style interaction, adapted to staffing -->
-        <div class="hero-card" aria-label="Deployment readiness preview">
-          <div class="hero-card-top">
-            <div class="title">Deployment Readiness Preview</div>
-            <div class="badge"><span class="dot"></span> Clinician-validated</div>
-          </div>
+        <aside class="stat-panel" aria-label="Key differentiators">
+          <div class="stat-title">Why this model works</div>
+          <ul class="stat-list">
+            <li class="pill"><span class="mark"></span><div><b>Lower supervision burden</b><span>Credentialed, high-acuity PAs who integrate quickly.</span></div></li>
+            <li class="pill"><span class="mark"></span><div><b>Faster ramp-up</b><span>Clinician-led onboarding and readiness validation.</span></div></li>
+            <li class="pill"><span class="mark"></span><div><b>Reduced adverse event risk</b><span>Academic-level practice standards in critical settings.</span></div></li>
+            <li class="pill"><span class="mark"></span><div><b>Transparent expectations</b><span>Skill-matched deployment—no entry-level placements.</span></div></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
 
-          <div class="demo">
-            <div class="demo-row">
-              <div class="bubble user">We need ICU coverage within 10 days. Can you staff a high-acuity unit with lines + bronchs?</div>
-            </div>
-            <div class="demo-row">
-              <div class="bubble system">
-                Yes. We deploy procedure-capable critical care PAs with explicit privileging alignment.
-                Share unit type (MICU/SICU), shift model, and procedures expected—then we validate readiness prior to start.
-              </div>
-            </div>
-            <div class="demo-row">
-              <div class="bubble user">We also need surge support for trauma resuscitation and airway backup.</div>
-            </div>
-            <div class="demo-row">
-              <div class="bubble system">
-                Understood. We prioritize trauma-center standards, rapid ramp-up, and reduced supervision burden.
-                We can support resuscitation workflows, airway assistance, and bedside ultrasound utilization where applicable.
-              </div>
-            </div>
-          </div>
-
-          <div class="chiprow" aria-label="Quick request chips">
-            <div class="chip">Trauma/SICU coverage</div>
-            <div class="chip">Central + arterial lines</div>
-            <div class="chip">Bronchoscopy capability</div>
-            <div class="chip">ENLS / ATLS readiness</div>
-            <div class="chip">Credentialing intake</div>
-          </div>
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="section-head">
+        <h2>Founded & Led by a Board-Certified Critical Care PA</h2>
+        <p>This is not recruiter-driven staffing. It is clinician-designed deployment—built for high-acuity environments where expertise, procedural capability, and readiness matter.</p>
+      </div>
+      <div class="grid">
+        <div class="card two-col">
+          <h3>Clinician-led staffing</h3>
+          <p>Critical Insight Strategies is founded and clinically directed by <b>Dr. Mary Herc, DMSc, PA-C, CAQ-EM, CAQ-HM</b>. Our model prioritizes patient safety, operational readiness, and accountable PA autonomy.</p>
+        </div>
+        <div class="card two-col">
+          <h3>High-acuity focus</h3>
+          <p>We staff only environments where clinical decision-making and procedural competence are essential: trauma, critical care, emergency medicine, and hospital medicine.</p>
         </div>
       </div>
-    </div>
+    </section>
+
+    <!-- CLINICAL LEADERSHIP -->
+    <section class="section" id="leadership">
+      <div class="section-head">
+        <h2>Clinical Leadership — Dr. Mary Herc</h2>
+        <p>Credentials that translate directly into institutional trust: academic training, frontline practice, and procedural authority in high-risk settings.</p>
+      </div>
+      <div class="grid">
+        <div class="card three-col">
+          <h3>Training</h3>
+          <p>Seton Hall University → Johns Hopkins Critical Care PA Residency → Doctorate in Medical Science (DMSc).</p>
+        </div>
+        <div class="card three-col">
+          <h3>Board certifications</h3>
+          <p>NCCPA PA‑C plus dual CAQs: Emergency Medicine (CAQ‑EM) and Hospital Medicine (CAQ‑HM).</p>
+        </div>
+        <div class="card three-col">
+          <h3>Practice</h3>
+          <p>Active frontline practice at an academic Level I trauma center with surgical critical care experience.</p>
+        </div>
+        <div class="card three-col">
+          <h3>Recognition</h3>
+          <p>Advanced Practice Clinical Excellence Award nominee and service leadership / advocacy background.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPECIALTIES -->
+    <section class="section" id="specialties">
+      <div class="section-head">
+        <h2>Specialties We Staff — High-Acuity Only</h2>
+        <p>Narrow scope increases quality. These services are designed for hospitals that need dependable, high-performing clinicians immediately.</p>
+      </div>
+      <div class="grid">
+        <div class="card four-col"><h3>Trauma & Surgical ICU</h3><p>High-risk surgical patients, resuscitation support, procedural coverage.</p></div>
+        <div class="card four-col"><h3>Medical ICU</h3><p>Complex critical illness, vent management support, bedside ultrasound.</p></div>
+        <div class="card four-col"><h3>Emergency Medicine</h3><p>High-volume acuity, rapid decision-making, trauma response.</p></div>
+        <div class="card four-col"><h3>Hospital Medicine</h3><p>Inpatient flow, consult coordination, escalation and stabilization.</p></div>
+        <div class="card four-col"><h3>Neurocritical Care</h3><p>Monitoring support, rapid deterioration response, ICU workflows.</p></div>
+        <div class="card four-col"><h3>Acute Care Surgery</h3><p>Peri-op support, critical care continuity, procedure readiness.</p></div>
+        <div class="card four-col"><h3>Tele‑ICU (when applicable)</h3><p>Remote monitoring support and escalation pathways.</p></div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section class="section" id="capabilities">
+      <div class="section-head">
+        <h2>Procedural & Operational Capabilities</h2>
+        <p>Beyond staffing. This signals safe coverage for your sickest patients, reduced credentialing friction, and predictable performance.</p>
+      </div>
+      <div class="grid">
+        <div class="card two-col">
+          <h3>Procedures</h3>
+          <div class="spec"><div><strong>Central & arterial line placement</strong><br><em>Evidence-based technique with ICU pace.</em></div></div>
+          <div style="height:10px"></div>
+          <div class="spec"><div><strong>Bronchoscopy</strong><br><em>Critical airway support and assessment.</em></div></div>
+          <div style="height:10px"></div>
+          <div class="spec"><div><strong>Advanced tube placement</strong><br><em>NG/ND placement and escalation protocols.</em></div></div>
+          <div style="height:10px"></div>
+          <div class="spec"><div><strong>Bedside ultrasonography</strong><br><em>Rapid diagnostics and procedural guidance.</em></div></div>
+        </div>
+        <div class="card two-col">
+          <h3>Operational readiness</h3>
+          <div class="spec"><div><strong>Trauma resuscitation leadership</strong><br><em>Team-based workflow under pressure.</em></div></div>
+          <div style="height:10px"></div>
+          <div class="spec"><div><strong>Critical airway support</strong><br><em>Escalation-ready in high acuity settings.</em></div></div>
+          <div style="height:10px"></div>
+          <div class="spec"><div><strong>Tactical & austere medicine</strong><br><em>Disaster-ready capability when standard systems strain.</em></div></div>
+          <div style="height:10px"></div>
+          <div class="spec"><div><strong>Clinician-led validation</strong><br><em>Skill matching and readiness confirmation.</em></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS / COMPLIANCE -->
+    <section class="section" id="compliance">
+      <div class="section-head">
+        <h2>Certifications & Compliance — Always Deployment-Ready</h2>
+        <p>Designed to reduce credentialing friction and accelerate privileging across trauma and critical care environments.</p>
+      </div>
+      <div class="grid">
+        <div class="card full">
+          <h3>Active certifications</h3>
+          <div class="tagrow">
+            <div class="tag">ACLS</div>
+            <div class="tag">ATLS</div>
+            <div class="tag">AWLS</div>
+            <div class="tag">BLS</div>
+            <div class="tag">ENLS</div>
+            <div class="tag">PALS</div>
+            <div class="tag">TCCC</div>
+            <div class="tag">NCCPA PA‑C</div>
+            <div class="tag">CAQ‑EM</div>
+            <div class="tag">CAQ‑HM</div>
+          </div>
+          <div style="height:14px"></div>
+          <p>Additional emphasis: rapid credentialing workflows, hospital-specific privileging familiarity, and trauma-center compliance standards.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FACILITIES -->
+    <section class="section" id="facilities">
+      <div class="section-head">
+        <h2>For Healthcare Facilities</h2>
+        <p>Direct messaging for CMOs, Directors, and staffing offices: high-acuity gap coverage with clinician-led onboarding and predictable performance.</p>
+      </div>
+      <div class="grid">
+        <div class="card three-col"><h3>Use cases</h3><p>Short-term crisis coverage • ICU overflow • trauma surge • high-acuity gaps • schedule stabilization.</p></div>
+        <div class="card three-col"><h3>What you gain</h3><p>Lower supervision burden • faster ramp-up • reduced adverse event risk • academic practice standards.</p></div>
+        <div class="card three-col"><h3>How we deploy</h3><p>Clinician-led readiness validation, scope alignment, and credentialing-forward workflows.</p></div>
+      </div>
+    </section>
+
+    <!-- PAS -->
+    <section class="section" id="pas">
+      <div class="section-head">
+        <h2>For Physician Assistants — Not Entry-Level Assignments</h2>
+        <p>We attract experienced clinicians and repel poor-fit placements. You get transparent expectations, skill-matched deployment, and mentorship from a doctorate-trained PA.</p>
+      </div>
+      <div class="grid">
+        <div class="card two-col"><h3>Who this is for</h3><p>Experienced acute care / EM / ICU PAs • procedure-comfortable clinicians • providers seeking advanced practice environments.</p></div>
+        <div class="card two-col"><h3>What you get</h3><p>Professional growth, not just placement • clear privileging expectations • assignments aligned to your skill set.</p></div>
+      </div>
+    </section>
+
+    <!-- MISSION -->
+    <section class="section" id="mission">
+      <div class="section-head">
+        <h2>Mission, Ethics & Patient Advocacy</h2>
+        <p>Elite care requires elite clinicians—and leadership that understands the bedside.</p>
+      </div>
+      <div class="grid">
+        <div class="card three-col"><h3>Patient-first</h3><p>Clinical decisions prioritize safety and outcomes over speed and volume.</p></div>
+        <div class="card three-col"><h3>Ethical staffing</h3><p>No misaligned placements. Readiness is validated and scope is respected.</p></div>
+        <div class="card three-col"><h3>Accountable autonomy</h3><p>Advocacy for PA autonomy with standards, mentorship, and responsibility.</p></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="section-head">
+        <h2>Contact & Deployment Requests</h2>
+        <p>Streamlined intake for facilities and clinicians. This form is a starting point; build integrations as needed for your workflow.</p>
+      </div>
+      <div class="contact">
+        <form>
+          <div class="field">
+            <label for="type">I am a…</label>
+            <select id="type" name="type">
+              <option>Healthcare Facility</option>
+              <option>Physician Assistant</option>
+              <option>Credentialing / HR</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Full name" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" placeholder="name@organization.com" />
+          </div>
+          <div class="field">
+            <label for="org">Organization (if applicable)</label>
+            <input id="org" name="org" placeholder="Hospital / Group" />
+          </div>
+          <div class="field full">
+            <label for="msg">Message</label>
+            <textarea id="msg" name="msg" placeholder="Tell us what you need: coverage dates, unit type (Trauma ICU, MICU, ED, HM), expected acuity, procedural requirements, credentialing timeline…"></textarea>
+          </div>
+          <div class="field full">
+            <div class="form-actions">
+              <a class="btn primary" href="#top" onclick="alert('Demo form: wire up to your email/CRM endpoint.'); return false;">Submit Request</a>
+              <a class="btn" href="#top">Back to Top</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
   </main>
 
-  <!-- About -->
-  <section id="about" class="section">
-    <div class="container">
-      <div class="pill"><span class="dot"></span> About</div>
-      <h2 class="h2">Founded & Led by a Board-Certified Critical Care PA</h2>
-      <p class="lead">
-        Critical Insight Strategies was created to solve a persistent gap in high-acuity staffing: facilities need clinicians who can safely manage the sickest patients,
-        and clinicians need leadership that understands the bedside. Our model is built around clinical standards—not sales quotas.
-      </p>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3>Clinically Directed</h3>
-          <p>Founded and overseen by Dr. Mary Herc, DMSc, PA-C, CAQ-EM, CAQ-HM—active frontline practice in an academic Level I trauma environment.</p>
-          <div class="meta">
-            <span class="tag">Doctorate in Medical Science</span>
-            <span class="tag">Johns Hopkins Critical Care PA Residency</span>
-            <span class="tag">Dual CAQs: EM + HM</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>High-Acuity Only</h3>
-          <p>Narrow scope increases reliability: we staff Trauma/ICU/EM/HM and adjacent critical services with explicit procedural expectations.</p>
-          <ul>
-            <li>Clear privileging and procedure alignment</li>
-            <li>Reduced ramp-up time and supervision burden</li>
-            <li>Safety-first staffing decisions</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Deployment, Not Placement</h3>
-          <p>We treat each engagement as a clinical deployment: readiness validation, unit-fit assessment, and clinician support throughout the assignment.</p>
-          <ul>
-            <li>Credentialing-aware intake</li>
-            <li>Surge response and gap coverage</li>
-            <li>Mentorship and standards reinforcement</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Clinical Leadership -->
-  <section id="leadership" class="section tight">
-    <div class="container">
-      <div class="pill"><span class="dot"></span> Clinical Leadership</div>
-      <h2 class="h2">Dr. Mary Herc — Credentials that Translate to Institutional Trust</h2>
-      <p class="lead">
-        Hospitals reduce risk when staffing decisions are led by clinicians who understand acuity, procedures, and unit dynamics. PAs grow faster when mentorship comes from someone who has done the work in high-stakes environments.
-      </p>
-
-      <div class="grid-2">
-        <div class="card">
-          <h3>Academic & Training Timeline</h3>
-          <div class="timeline">
-            <div class="titem">
-              <div class="tline" aria-hidden="true"></div>
-              <div>
-                <strong>Seton Hall University</strong>
-                <span>Foundational training and preparation for high-acuity clinical practice.</span>
-              </div>
-            </div>
-            <div class="titem">
-              <div class="tline" aria-hidden="true"></div>
-              <div>
-                <strong>Johns Hopkins — Critical Care PA Residency</strong>
-                <span>Residency-level training focused on ICU standards, complex physiology, and procedural competence.</span>
-              </div>
-            </div>
-            <div class="titem">
-              <div class="tline" aria-hidden="true"></div>
-              <div>
-                <strong>Doctorate in Medical Science (DMSc)</strong>
-                <span>Advanced clinical leadership, systems thinking, and evidence-driven care delivery.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="meta" style="margin-top:14px">
-            <span class="tag">Academic Level I Trauma Center</span>
-            <span class="tag">Service leadership & advocacy</span>
-            <span class="tag">Advanced Practice Clinical Excellence Award Nominee</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Procedural Authority & Service Leadership</h3>
-          <p>Capabilities that matter when staffing high-risk patients—paired with a leadership approach that prioritizes safety, clarity, and accountability.</p>
-          <ul>
-            <li>Central & arterial line placement</li>
-            <li>Bronchoscopy</li>
-            <li>Advanced tube placement (NG/ND)</li>
-            <li>Bedside ultrasonography</li>
-            <li>Trauma resuscitation leadership and critical airway support</li>
-            <li>Tactical & austere environment medicine experience</li>
-          </ul>
-          <div class="meta">
-            <span class="tag">Risk reduction for hospitals</span>
-            <span class="tag">Real mentorship for PAs</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Specialties -->
-  <section id="specialties" class="section">
-    <div class="container">
-      <div class="pill"><span class="dot"></span> Specialties We Staff</div>
-      <h2 class="h2">High-Acuity Only</h2>
-      <p class="lead">
-        We intentionally focus on a narrow set of high-acuity services to ensure superior matching, readiness, and reliability. Each engagement defines patient acuity, procedural expectations, and credential requirements upfront.
-      </p>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3>Trauma & Surgical ICU</h3>
-          <p>Trauma-center standards, resuscitation workflows, post-op critical care, and procedural demands.</p>
-          <div class="meta">
-            <span class="tag">Acuity: high</span><span class="tag">Procedures: lines/US</span><span class="tag">Credentialing: trauma-ready</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Medical ICU</h3>
-          <p>Complex physiology, ventilation support, sepsis/organ failure management, and ICU coordination.</p>
-          <div class="meta">
-            <span class="tag">Acuity: high</span><span class="tag">Procedures: lines/US</span><span class="tag">Credentialing: ICU privileging</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Emergency Medicine</h3>
-          <p>Critical presentations, stabilization, airway assistance, trauma activation support, and throughput pressure.</p>
-          <div class="meta">
-            <span class="tag">Acuity: variable→high</span><span class="tag">Procedures: airway/US</span><span class="tag">Credentialing: ED standards</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Hospital Medicine</h3>
-          <p>Academic-level inpatient standards, rapid escalation pathways, and cross-service coordination.</p>
-          <div class="meta">
-            <span class="tag">Acuity: moderate→high</span><span class="tag">Procedures: as defined</span><span class="tag">Credentialing: inpatient</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Neurocritical Care</h3>
-          <p>High-risk neurologic monitoring environments with strict protocols and rapid response requirements.</p>
-          <div class="meta">
-            <span class="tag">Acuity: high</span><span class="tag">Procedures: US/lines</span><span class="tag">Credentialing: NCC pathways</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Acute Care Surgery</h3>
-          <p>Emergency surgical care with critical care overlap; workflow-driven, high consequence decision-making.</p>
-          <div class="meta">
-            <span class="tag">Acuity: high</span><span class="tag">Procedures: lines/tubes</span><span class="tag">Credentialing: ACS</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid-2" style="margin-top:14px">
-        <div class="card">
-          <h3>Tele-ICU / Remote Monitoring (when applicable)</h3>
-          <p>Support for monitoring, escalation, and coordination in hybrid models—when the facility’s program supports PA utilization.</p>
-        </div>
-        <div class="card">
-          <h3>Specialty Pages (Optional Build)</h3>
-          <p>If you want this site expanded, each specialty can become its own page with patient acuity examples, privileging matrices, and procedure expectations.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Capabilities -->
-  <section id="capabilities" class="section tight">
-    <div class="container">
-      <div class="pill"><span class="dot"></span> Procedural & Operational Capabilities</div>
-      <h2 class="h2">Differentiate from Generic Locums</h2>
-      <p class="lead">
-        This section exists to make a single point unmistakable: <strong style="color:#fff">you can staff your sickest patients safely</strong>.
-        We define procedural expectations in plain language and match clinicians accordingly.
-      </p>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3>Procedures</h3>
-          <ul>
-            <li>Central & arterial line placement</li>
-            <li>Bronchoscopy</li>
-            <li>NG / ND tube placement</li>
-            <li>Bedside ultrasonography</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>High-Risk Workflow Readiness</h3>
-          <ul>
-            <li>Trauma resuscitation leadership support</li>
-            <li>Critical airway support & escalation</li>
-            <li>ICU surge coverage and overflow support</li>
-            <li>Protocol adherence in academic environments</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Austere & Disaster Capability</h3>
-          <ul>
-            <li>Tactical and austere environment medicine</li>
-            <li>Wilderness and disaster-ready mindset</li>
-            <li>Safety over speed; clarity over assumptions</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Compliance -->
-  <section id="compliance" class="section">
-    <div class="container">
-      <div class="pill"><span class="dot"></span> Certifications & Compliance</div>
-      <h2 class="h2">Always Deployment-Ready</h2>
-      <p class="lead">
-        Credentialing friction costs time and increases risk. We streamline intake around hospital privileging, trauma-center standards, and rapid onboarding expectations.
-      </p>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3>Active Certifications</h3>
-          <div class="meta" style="margin-top:0">
-            <span class="tag">ACLS</span>
-            <span class="tag">ATLS</span>
-            <span class="tag">AWLS</span>
-            <span class="tag">BLS</span>
-            <span class="tag">ENLS</span>
-            <span class="tag">PALS</span>
-            <span class="tag">TCCC</span>
-          </div>
-          <div class="meta">
-            <span class="tag">NCCPA PA-C</span>
-            <span class="tag">CAQ-EM</span>
-            <span class="tag">CAQ-HM</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Credentialing Workflow</h3>
-          <ul>
-            <li>Hospital-specific privileging familiarity</li>
-            <li>Unit-appropriate scope verification</li>
-            <li>Clear documentation pathways for faster onboarding</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Compliance Standards</h3>
-          <ul>
-            <li>Trauma-center readiness expectations</li>
-            <li>Academic-level practice standards</li>
-            <li>Readiness validation prior to start</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="accordion" aria-label="FAQ: compliance">
-        <details>
-          <summary>
-            What does “deployment-ready” mean in practice?
-            <span aria-hidden="true">▾</span>
-          </summary>
-          <p>
-            It means scope, procedures, and unit expectations are defined upfront, and readiness is validated before the clinician starts.
-            The goal is to reduce supervision burden, shorten ramp-up, and preserve patient safety.
-          </p>
-        </details>
-        <details>
-          <summary>
-            Do you support rapid credentialing and privileging?
-            <span aria-hidden="true">▾</span>
-          </summary>
-          <p>
-            Yes. Our intake is designed around common privileging requirements and trauma-center standards. We gather the right details early to reduce delays.
-          </p>
-        </details>
-        <details>
-          <summary>
-            Are assignments limited to high-acuity environments?
-            <span aria-hidden="true">▾</span>
-          </summary>
-          <p>
-            Yes. Critical Insight Strategies focuses on high-acuity placements where procedural competence and clinical leadership materially reduce risk.
-          </p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- For Facilities -->
-  <section id="facilities" class="section tight">
-    <div class="container">
-      <div class="pill"><span class="dot"></span> For Healthcare Facilities</div>
-      <h2 class="h2">Crisis Coverage and High-Acuity Gap Staffing—Clinically Validated</h2>
-      <p class="lead">
-        When acuity rises, the margin for error shrinks. We provide clinician-led onboarding and readiness validation so your teams spend less time supervising and more time delivering care.
-      </p>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3>Use Cases</h3>
-          <ul>
-            <li>Short-term crisis coverage</li>
-            <li>High-acuity gap staffing</li>
-            <li>Surge response (trauma, ICU overflow)</li>
-            <li>Tele-ICU support (when applicable)</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Why Facilities Choose This Model</h3>
-          <ul>
-            <li>Lower supervision burden</li>
-            <li>Faster ramp-up</li>
-            <li>Reduced adverse event risk</li>
-            <li>Academic-level practice standards</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Clinician-Led Onboarding</h3>
-          <p>We clarify expectations and validate readiness before start date—procedures, scope, and workflow fit are explicit.</p>
-          <div class="meta">
-            <span class="tag">Unit-fit assessment</span>
-            <span class="tag">Procedure match</span>
-            <span class="tag">Privileging alignment</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="cta-row" style="margin-top:18px">
-        <a class="btn primary" href="#contact">
-          <span class="icon" aria-hidden="true">📨</span>
-          Request Elite PA Coverage
-        </a>
-        <a class="btn" href="#contact" onclick="prefillFacility(); return false;">
-          <span class="icon" aria-hidden="true">⚡</span>
-          Start a Deployment Request
-        </a>
-      </div>
-      <p class="small">Typical intake: unit type, shift model, expected procedures, start date, licensing/credentialing requirements.</p>
-    </div>
-  </section>
-
-  <!-- For PAs -->
-  <section id="pas" class="section">
-    <div class="container">
-      <div class="pill"><span class="dot"></span> For Physician Assistants</div>
-      <h2 class="h2">Not Entry-Level Assignments</h2>
-      <p class="lead">
-        We recruit experienced Acute Care / EM / ICU PAs who are procedure-comfortable and want advanced practice environments with clear expectations and real mentorship.
-      </p>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3>Who We’re Looking For</h3>
-          <ul>
-            <li>Experienced Acute Care / EM / ICU PAs</li>
-            <li>Procedure-capable clinicians</li>
-            <li>Providers seeking advanced practice environments</li>
-            <li>Clinicians who prioritize safety and accountability</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>What You Get</h3>
-          <ul>
-            <li>Transparent expectations (scope + procedures)</li>
-            <li>Mentorship from a doctorate-trained PA</li>
-            <li>Assignments aligned to your skill set</li>
-            <li>Professional growth—not just placement</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>How Matching Works</h3>
-          <p>We define unit acuity and procedural expectations first, then match based on demonstrated competence and comfort—no surprises on day one.</p>
-          <div class="meta">
-            <span class="tag">Skill-set alignment</span>
-            <span class="tag">Scope clarity</span>
-            <span class="tag">High-acuity only</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="cta-row" style="margin-top:18px">
-        <a class="btn primary" href="#contact" onclick="prefillPA(); return false;">
-          <span class="icon" aria-hidden="true">📄</span>
-          Apply / Upload CV
-        </a>
-        <a class="btn" href="#contact">
-          <span class="icon" aria-hidden="true">🧭</span>
-          Join the High-Acuity Travel Team
-        </a>
-      </div>
-      <p class="small">We recommend including: CV, active licenses, procedure comfort list, and preferred specialties.</p>
-    </div>
-  </section>
-
-  <!-- Mission -->
-  <section id="mission" class="section tight">
-    <div class="container">
-      <div class="pill"><span class="dot"></span> Mission, Ethics & Patient Advocacy</div>
-      <h2 class="h2">Safety Over Speed. Patient-First. Clinician-Led.</h2>
-      <p class="lead">
-        Our mission is simple: elite care requires elite clinicians—and elite clinicians require leadership that understands the bedside.
-        We build staffing decisions around patient safety, ethical deployment, and PA autonomy with accountability.
-      </p>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3>Patient-First Decision Making</h3>
-          <p>Staffing is a clinical decision. We prioritize outcomes, unit-fit, and readiness over speed or volume.</p>
-        </div>
-        <div class="card">
-          <h3>Ethical Staffing</h3>
-          <p>Clear expectations, honest matching, and safety-aligned standards—no surprise scopes, no overpromising.</p>
-        </div>
-        <div class="card">
-          <h3>Advocacy with Accountability</h3>
-          <p>We support PA autonomy where competence and systems enable it—paired with rigorous clinical standards.</p>
-        </div>
-      </div>
-
-      <div class="accordion" aria-label="FAQ: mission">
-        <details>
-          <summary>
-            How do you balance speed and safety in deployments?
-            <span aria-hidden="true">▾</span>
-          </summary>
-          <p>
-            We move quickly on logistics, but never skip readiness validation. Scope and procedure expectations are clarified early so onboarding is efficient without compromising patient safety.
-          </p>
-        </details>
-        <details>
-          <summary>
-            Are you recruiter-driven or clinician-driven?
-            <span aria-hidden="true">▾</span>
-          </summary>
-          <p>
-            Clinician-driven. Staffing decisions are based on acuity, scope, and procedural alignment—guided by a critical care PA with residency training and dual CAQs.
-          </p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="section">
-    <div class="container">
-      <div class="pill"><span class="dot"></span> Contact & Deployment Requests</div>
-      <h2 class="h2">Request Coverage or Apply</h2>
-      <p class="lead">
-        Direct leadership contact—no generic inbox. Use the form below to request elite PA coverage or to join the high-acuity travel team.
-      </p>
-
-      <div class="contact-grid">
-        <div class="card">
-          <h3>Send a Request</h3>
-          <form class="form" id="contactForm">
-            <div class="row2">
-              <label>
-                I am a…
-                <select id="persona" name="persona" required>
-                  <option value="" selected disabled>Select one</option>
-                  <option value="Facility">Facility / Staffing Office</option>
-                  <option value="PA">Physician Assistant</option>
-                  <option value="Other">Other</option>
-                </select>
-              </label>
-              <label>
-                Primary Need
-                <select id="need" name="need" required>
-                  <option value="" selected disabled>Select one</option>
-                  <option value="Coverage Request">Request Coverage</option>
-                  <option value="PA Application">PA Application</option>
-                  <option value="Credentialing Intake">Credentialing Intake</option>
-                  <option value="General">General Inquiry</option>
-                </select>
-              </label>
-            </div>
-
-            <div class="row2">
-              <label>
-                Full Name
-                <input type="text" name="name" placeholder="Your name" required />
-              </label>
-              <label>
-                Email
-                <input type="email" name="email" placeholder="you@domain.com" required />
-              </label>
-            </div>
-
-            <div class="row2">
-              <label>
-                Organization (Facilities) / Current Role (PAs)
-                <input type="text" name="org" placeholder="Hospital / Group / Role" />
-              </label>
-              <label>
-                Desired Start Date / Availability
-                <input type="text" name="date" placeholder="e.g., ASAP, Feb 12, 2026, 10 days" />
-              </label>
-            </div>
-
-            <label>
-              Message (include unit type, shifts, procedures, or CV notes)
-              <textarea name="message" id="message" placeholder="Example: SICU coverage, 7-on/7-off nights, lines + bronchs expected, start within 10 days..."></textarea>
-            </label>
-
-            <div class="row2">
-              <label>
-                Phone (optional)
-                <input type="tel" name="phone" placeholder="(555) 555-5555" />
-              </label>
-              <label>
-                Preferred Contact Method
-                <select name="contact_method">
-                  <option>Email</option>
-                  <option>Phone</option>
-                </select>
-              </label>
-            </div>
-
-            <!-- Note: This is a front-end demo submit. Wire to your backend/service as needed. -->
-            <button class="btn primary" type="submit">
-              <span class="icon" aria-hidden="true">✅</span>
-              Submit
-            </button>
-
-            <p class="small" id="formStatus" aria-live="polite" style="margin:6px 0 0"></p>
-            <p class="small">
-              For production: wire this form to your email/CRM (Formspree, Netlify Forms, Zapier, HubSpot, etc.) and add a file upload field if desired.
-            </p>
-          </form>
-        </div>
-
-        <div class="card">
-          <h3>Deployment Request Checklist</h3>
-          <p>To move fast without compromising safety, include these details:</p>
-          <ul>
-            <li><strong style="color:#fff">Unit type</strong> (MICU/SICU/Trauma/ED/HM/Neuro ICU)</li>
-            <li><strong style="color:#fff">Shift model</strong> (days/nights, 7-on/7-off, 12s, etc.)</li>
-            <li><strong style="color:#fff">Procedures expected</strong> (lines, bronchs, ultrasound, airway support)</li>
-            <li><strong style="color:#fff">Start date</strong> and assignment duration</li>
-            <li><strong style="color:#fff">Licensing / privileging requirements</strong></li>
-          </ul>
-
-          <div class="meta">
-            <span class="tag">Direct leadership contact</span>
-            <span class="tag">Clinician-led validation</span>
-            <span class="tag">High-acuity only</span>
-          </div>
-
-          <div style="height:10px"></div>
-
-          <div class="pill"><span class="dot"></span> Summary Positioning</div>
-          <p class="small" style="margin-top:10px">
-            Elite care requires elite clinicians—and elite clinicians require leadership that understands the bedside.
-            Critical Insight Strategies transforms “travel PA staffing” into clinician-led critical care deployment.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer>
-    <div class="container">
-      <div class="foot-row">
-        <div class="foot-brand">
-          <div class="logo" aria-hidden="true" style="width:30px;height:30px;border-radius:10px">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M12 2l8 4v7c0 5-3.4 8.7-8 9-4.6-.3-8-4-8-9V6l8-4z" stroke="rgba(255,255,255,.86)" stroke-width="1.6"/>
-              <path d="M8.3 11.8l2.2 2.2 5.4-5.4" stroke="rgba(255,255,255,.86)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div>
-            <div style="color:rgba(255,255,255,.86); font-weight:700; letter-spacing:.06em; text-transform:uppercase;">Critical Insight Strategies</div>
-            <div style="color:rgba(255,255,255,.58); font-size:12px; margin-top:2px;">Clinician-led critical care staffing</div>
-          </div>
+    <div class="wrap foot">
+      <div>© <span id="y"></span> Critical Insight Strategies · Clinician‑Led Critical Care Deployment</div>
+      <div class="powered">
+        <div class="badge">
+          <span>Powered by</span>
+          <!-- Replace with your final GLA logo asset path -->
+          <img src="/assets/grand-line-analytics-logo.png" alt="Grand Line Analytics" />
+          <b>Grand Line Analytics</b>
         </div>
-
-        <div class="gla" title="Powered By Grand Line Analytics">
-          <span class="spark" aria-hidden="true"></span>
-          Powered By Grand Line Analytics
-        </div>
-
-        <div>© <span id="year"></span> Critical Insight Strategies. All rights reserved.</div>
       </div>
     </div>
   </footer>
 
   <script>
-    // Mobile drawer logic
-    const drawer = document.getElementById('drawer');
-    const openBtn = document.getElementById('openDrawer');
-    const closeBtn = document.getElementById('closeDrawer');
-
-    function openDrawer(){
-      drawer.classList.add('open');
-      drawer.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeDrawer(){
-      drawer.classList.remove('open');
-      drawer.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-
-    openBtn?.addEventListener('click', openDrawer);
-    closeBtn?.addEventListener('click', closeDrawer);
-
-    // Close drawer when clicking backdrop
-    drawer.addEventListener('click', (e) => {
-      if (e.target === drawer) closeDrawer();
-    });
-
-    // Close drawer when selecting a link
-    document.querySelectorAll('.drawerLink').forEach(a => {
-      a.addEventListener('click', () => closeDrawer());
-    });
-
-    // Prefill helpers
-    function prefillFacility(){
-      document.getElementById('persona').value = 'Facility';
-      document.getElementById('need').value = 'Coverage Request';
-      const msg = document.getElementById('message');
-      if (msg && !msg.value.trim()){
-        msg.value = "Facility request:\n- Unit type (MICU/SICU/Trauma/ED/HM/Neuro ICU): \n- Shift model (days/nights, 7-on/7-off, 12s): \n- Procedures expected (lines, bronchs, ultrasound, airway): \n- Start date / duration: \n- Licensing / privileging requirements: \n";
-      }
-      document.getElementById('contact')?.scrollIntoView({behavior:'smooth'});
-    }
-    function prefillPA(){
-      document.getElementById('persona').value = 'PA';
-      document.getElementById('need').value = 'PA Application';
-      const msg = document.getElementById('message');
-      if (msg && !msg.value.trim()){
-        msg.value = "PA application:\n- Years of experience (ICU/EM/HM): \n- Procedure comfort (lines/US/airway/bronch): \n- Active licenses / states: \n- Preferred specialties (SICU/MICU/Trauma/ED/HM): \n- Availability / start date: \n- Attach CV (if emailing separately): \n";
-      }
-      document.getElementById('contact')?.scrollIntoView({behavior:'smooth'});
-    }
-    window.prefillFacility = prefillFacility;
-    window.prefillPA = prefillPA;
-
-    // Demo form submit (front-end only)
-    const form = document.getElementById('contactForm');
-    const status = document.getElementById('formStatus');
-    form?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (status){
-        status.textContent = "Submitted (demo). Connect this form to a backend or form service to receive messages.";
-      }
-      form.reset();
-    });
-
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
+
