@@ -33,8 +33,7 @@
     }
 
     *{box-sizing:border-box;}
-    html,body{height:100%;}
-    body{
+    html,body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
@@ -44,7 +43,25 @@
         radial-gradient(900px 520px at 72% 92%, rgba(59,74,104,0.35), transparent 60%),
         linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 40%, var(--bg2) 100%);
       overflow-x:hidden;
+      position:relative;
     }
+
+    /* Subtle global watermark logo */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image: url("assets/critical-insight-logo.png");
+      background-repeat: no-repeat;
+      background-position: center 55%;
+      background-size: min(720px, 85vw);
+      opacity: 0.035;
+      filter: grayscale(1) brightness(2);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    body > *{position:relative; z-index:1;}
 
     a{color:inherit;}
 
@@ -59,7 +76,7 @@
     }
     .nav .inner{display:flex; align-items:center; justify-content:space-between; gap:18px; padding:18px 0;}
     .brand{display:flex; align-items:center; gap:18px; min-width:320px;}
-    .brand img{height:64px; width:auto; display:block; filter: drop-shadow(0 14px 28px rgba(0,0,0,0.45));}
+    .brand img{height:64px; width:auto; display:block; filter: drop-shadow(0 14px 28px rgba(0,0,0,0.45)) brightness(1.15);}
     .brand .name{line-height:1.1;}
     .brand .name strong{display:block; font-size:14px; letter-spacing:0.22em; text-transform:uppercase; opacity:0.95;}
     .brand .name span{display:block; font-size:13px; color:var(--muted2); margin-top:6px;}
@@ -285,7 +302,7 @@
     <div class="wrap inner">
       <div class="brand">
         <!-- Replace with your final CIS logo asset path -->
-        <img src="/assets/critical-insight-logo.png" alt="Critical Insight Strategies" />
+        <img src="assets/critical-insight-logo.png" alt="Critical Insight Strategies" style="filter:brightness(1.35) saturate(0);" />
         <div class="name">
           <strong>Critical Insight Strategies</strong>
           <span>Clinician-led critical care deployment</span>
@@ -549,7 +566,7 @@
         <div class="badge">
           <span>Powered by</span>
           <!-- Replace with your final GLA logo asset path -->
-          <img src="/assets/grand-line-analytics-logo.png" alt="Grand Line Analytics" />
+          <img src="assets/grand-line-analytics-logo.png" alt="Grand Line Analytics" />
           <b>Grand Line Analytics</b>
         </div>
       </div>
