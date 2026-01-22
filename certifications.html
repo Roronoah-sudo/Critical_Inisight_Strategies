@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Certifications | Critical Insight Strategies</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/cis-favicon.png">
+<meta name="description" content="Board certifications, credentials, and training certifications for Critical Insight Strategies clinicians.">
+
+<style>
+    :root { --color-bg: #0a1a2e; --color-bg-alt: #071422; --color-header-bg: #071422; --color-footer-bg: #050f1a; --color-text: #C9D4E0; --color-text-strong: #FFFFFF; --color-accent: #3B82F6; --color-contact-border: #3B82F6; --color-button-text: #FFFFFF; }
+    body.dark-mode { --color-bg: #030712; --color-bg-alt: #020617; --color-header-bg: #020617; --color-footer-bg: #010409; --color-text: #E5E7EB; --color-text-strong: #F9FAFB; --color-accent: #60A5FA; --color-contact-border: #374151; --color-button-text: #020617; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--color-bg); color: var(--color-text); transition: background 0.35s ease, color 0.35s ease; }
+    a { color: inherit; }
+
+    header { background: var(--color-header-bg); padding: 14px 40px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; box-shadow: 0 2px 12px rgba(0,0,0,0.4); z-index: 100; }
+    header a.logo-link { display: inline-flex; align-items: center; }
+    header img { height: 60px; transition: transform 0.25s ease; }
+    header img:hover { transform: translateY(-1px); }
+    nav { display: flex; align-items: center; }
+    nav a { font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); margin-left: 28px; text-decoration: none; font-size: 13px; transition: color 0.2s ease, transform 0.2s ease, opacity 0.2s ease; opacity: 0.9; }
+    nav a.active { color: var(--color-accent); opacity: 1; font-weight: 700; }
+    nav a:hover { color: var(--color-accent); transform: translateY(-1px); opacity: 1; }
+    .theme-toggle { margin-left: 28px; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--color-accent); background: transparent; color: var(--color-accent); font-size: 11px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 0.14em; transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease; }
+    .theme-toggle:hover { background: var(--color-accent); color: var(--color-button-text); transform: translateY(-1px); }
+    .nav-toggle { display: none; background: none; border: none; padding: 8px; margin-left: auto; cursor: pointer; }
+    .nav-toggle span { display: block; width: 20px; height: 2px; margin: 4px 0; background: var(--color-text-strong); border-radius: 999px; transition: transform 0.2s ease, opacity 0.2s ease; }
+    body.nav-open .nav-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    body.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+    body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    main { max-width: 1000px; margin: 40px auto 60px auto; padding: 0 20px; }
+    .crumbs { font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; opacity: 0.75; margin-bottom: 10px; }
+    .crumbs a { text-decoration: none; color: var(--color-text); }
+    .crumbs a:hover { color: var(--color-accent); }
+    .crumbs span { margin: 0 4px; }
+    .pill { display: inline-block; border-radius: 999px; border: 1px solid rgba(59,130,246,0.6); padding: 4px 12px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 10px; font-weight: 600; }
+    h1 { color: var(--color-text-strong); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 26px; margin: 0 0 10px 0; }
+    .subtitle { font-size: 13px; margin-bottom: 30px; line-height: 1.6; max-width: 700px; }
+
+    .cert-section { margin-bottom: 36px; }
+    .cert-section h2 { color: var(--color-text-strong); font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 16px 0; padding-bottom: 8px; border-bottom: 1px solid rgba(59,130,246,0.3); }
+    
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+    .cert-card { background: var(--color-bg-alt); border-radius: 12px; border: 1px solid rgba(59,130,246,0.25); padding: 16px 18px; transition: border-color 0.2s ease, transform 0.2s ease; }
+    .cert-card:hover { border-color: rgba(59,130,246,0.5); transform: translateY(-2px); }
+    .cert-name { font-weight: 700; color: var(--color-text-strong); font-size: 14px; margin-bottom: 4px; }
+    .cert-full { font-size: 12px; opacity: 0.85; line-height: 1.4; }
+
+    .training-list { list-style: none; padding: 0; margin: 0; }
+    .training-list li { background: var(--color-bg-alt); border-radius: 12px; border: 1px solid rgba(59,130,246,0.25); padding: 16px 18px; margin-bottom: 10px; display: flex; align-items: center; gap: 14px; }
+    .training-list li:last-child { margin-bottom: 0; }
+    .training-icon { width: 40px; height: 40px; border-radius: 50%; background: rgba(59,130,246,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .training-icon svg { width: 20px; height: 20px; stroke: var(--color-accent); fill: none; stroke-width: 2; }
+    .training-text .inst { font-weight: 700; color: var(--color-text-strong); font-size: 14px; }
+    .training-text .prog { font-size: 12px; opacity: 0.85; margin-top: 2px; }
+
+    .cta-section { margin-top: 40px; padding: 24px; background: var(--color-bg-alt); border-radius: 16px; border: 1px solid rgba(59,130,246,0.3); text-align: center; }
+    .cta-section p { margin: 0 0 16px 0; font-size: 14px; }
+    .btn { display: inline-block; padding: 12px 28px; border-radius: 999px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; text-decoration: none; transition: all 0.2s ease; }
+    .btn-primary { background: var(--color-accent); color: var(--color-button-text); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+
+    footer { text-align: center; padding: 18px 20px 24px 20px; background: var(--color-footer-bg); border-top: 1px solid var(--color-contact-border); font-size: 11px; color: var(--color-text); letter-spacing: 0.08em; text-transform: uppercase; }
+    .footer-inner { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .footer-logo { height: 38px; }
+    .gla-card { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #064A52, #043940); padding: 10px 18px; border-radius: 12px; border: 1px solid rgba(216,168,66,0.4); text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+    .gla-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 15px rgba(216,168,66,0.2); border-color: rgba(216,168,66,0.7); }
+    .gla-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: #C9CED3; opacity: 0.8; }
+    .gla-logo { height: 28px; filter: drop-shadow(0 0 4px rgba(216,168,66,0.3)); }
+    .gla-name { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #D8A842; }
+
+    @media (max-width: 880px) {
+        header { padding: 12px 16px; }
+        .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+        header img { height: 50px; }
+        header nav { position: fixed; top: 64px; left: 0; right: 0; background: var(--color-header-bg); padding: 10px 18px 16px 18px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; box-shadow: 0 8px 18px rgba(0,0,0,0.6); transform: translateY(-120%); opacity: 0; pointer-events: none; transition: transform 0.25s ease, opacity 0.25s ease; z-index: 90; }
+        body.nav-open header nav { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        header nav a, .theme-toggle { margin-left: 0; }
+        .theme-toggle { align-self: stretch; text-align: center; margin-top: 4px; }
+        .cert-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 500px) {
+        .cert-grid { grid-template-columns: 1fr; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo-link"><img id="headerLogo" src="assets/cis-logo-transparent.png" alt="Critical Insight Strategies Logo"></a>
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  <nav>
+    <a href="mission.html">Mission</a>
+    <a href="founder.html">Leadership</a>
+    <a href="services.html">Specialties</a>
+    <a href="facilities.html">For Facilities</a>
+    <a href="certifications.html" class="active">Certifications</a>
+    <a href="pas.html">Request Coverage</a>
+    <button id="themeToggle" class="theme-toggle" type="button">Dark mode</button>
+  </nav>
+</header>
+
+<main>
+    <nav class="crumbs"><a href="index.html">Home</a><span>/</span><span>Certifications</span></nav>
+    <div class="pill">Critical Insight Strategies</div>
+    <h1>Certifications</h1>
+    <div class="subtitle">Board certifications, advanced credentials, and specialized training that ensure our clinicians meet the highest standards for high-acuity critical care environments.</div>
+
+    <div class="cert-section">
+        <h2>Board Certifications</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-name">NCCPA PA-C</div>
+                <div class="cert-full">National Commission on Certification of Physician Assistants</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-name">CAQ-EM</div>
+                <div class="cert-full">Certificate of Added Qualifications — Emergency Medicine</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-name">CAQ-HM</div>
+                <div class="cert-full">Certificate of Added Qualifications — Hospital Medicine</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cert-section">
+        <h2>Life Support & Trauma Certifications</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-name">ACLS</div>
+                <div class="cert-full">Advanced Cardiovascular Life Support</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-name">ATLS</div>
+                <div class="cert-full">Advanced Trauma Life Support</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-name">AWLS</div>
+                <div class="cert-full">Advanced Wilderness Life Support</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-name">BLS</div>
+                <div class="cert-full">Basic Life Support</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-name">ENLS</div>
+                <div class="cert-full">Emergency Neurological Life Support</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-name">PALS</div>
+                <div class="cert-full">Pediatric Advanced Life Support</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-name">TCCC</div>
+                <div class="cert-full">Tactical Combat Casualty Care</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cert-section">
+        <h2>Training Pathway</h2>
+        <ul class="training-list">
+            <li>
+                <div class="training-icon">
+                    <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </div>
+                <div class="training-text">
+                    <div class="inst">Seton Hall University</div>
+                    <div class="prog">Physician Assistant Program</div>
+                </div>
+            </li>
+            <li>
+                <div class="training-icon">
+                    <svg viewBox="0 0 24 24"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16"/></svg>
+                </div>
+                <div class="training-text">
+                    <div class="inst">Johns Hopkins Hospital</div>
+                    <div class="prog">Critical Care PA Residency</div>
+                </div>
+            </li>
+            <li>
+                <div class="training-icon">
+                    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+                </div>
+                <div class="training-text">
+                    <div class="inst">University of Lynchburg</div>
+                    <div class="prog">Doctorate in Medical Science (DMSc)</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="cta-section">
+        <p>Looking for credentialing documentation or verification? Contact us directly.</p>
+        <a href="mailto:credentialing@critical-insight-strategies.com" class="btn btn-primary">Contact Credentialing</a>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <img id="footerLogo" class="footer-logo" src="assets/cis-logo-transparent.png" alt="Critical Insight Strategies Logo">
+        <div>© 2025 Critical Insight Strategies — Clinician-Led Critical Care Deployment</div>
+        <a href="https://grandlineanalytics.com" target="_blank" class="gla-card">
+            <span class="gla-label">Powered by</span>
+            <img src="assets/grand-line-analytics-logo.png" alt="Grand Line Analytics" class="gla-logo">
+            <span class="gla-name">Grand Line Analytics</span>
+        </a>
+    </div>
+</footer>
+
+<script>
+  (function () {
+    const body = document.body, toggle = document.getElementById('themeToggle'), navToggle = document.getElementById('navToggle');
+    function applyTheme(theme) { const isDark = theme === 'dark'; body.classList.toggle('dark-mode', isDark); if (toggle) toggle.textContent = isDark ? 'Light mode' : 'Dark mode'; }
+    applyTheme(localStorage.getItem('cis-theme') === 'dark' ? 'dark' : 'light');
+    if (toggle) toggle.addEventListener('click', function () { const newTheme = body.classList.contains('dark-mode') ? 'light' : 'dark'; applyTheme(newTheme); localStorage.setItem('cis-theme', newTheme); });
+    if (navToggle) navToggle.addEventListener('click', function () { body.classList.toggle('nav-open'); });
+    document.querySelectorAll('header nav a').forEach(link => { link.addEventListener('click', () => { body.classList.remove('nav-open'); }); });
+  })();
+</script>
+</body>
+</html>
